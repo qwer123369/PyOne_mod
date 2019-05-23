@@ -91,11 +91,11 @@ def index(path=None):
                     return MakeResponse(abort(401))
             else:
                 return jsonify(data)
-    if password1==password:
-        resp=MakeResponse(redirect(url_for('.index',path=path)))
-        resp.delete_cookie(md5_p)
-        resp.set_cookie(md5_p,password)
-        return resp
+        if password1==password:
+            resp=MakeResponse(redirect(url_for('.index',path=path)))
+            resp.delete_cookie(md5_p)
+            resp.set_cookie(md5_p,password)
+            return resp
     if password!=False:
         if (not request.cookies.get(md5_p) or request.cookies.get(md5_p)!=password) and has_verify_==False:
             if total=='files' and GetConfig('encrypt_file')=="no":
