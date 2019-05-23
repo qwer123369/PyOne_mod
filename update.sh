@@ -82,6 +82,12 @@ update_config(){
         echo 'default_pan="A"' >> self_config.py
     fi
 
+    num=`cat self_config.py | grep "balance" | wc -l`
+    if [ $num == 0 ]; then
+        echo '' >> self_config.py
+        echo 'balance="False"' >> self_config.py
+    fi
+
     num=`cat self_config.py | grep "robots" | wc -l`
     if [ $num == 0 ]; then
         echo '' >> self_config.py
@@ -89,6 +95,13 @@ update_config(){
 User-agent:  *
 Disallow:  /
 """' >> self_config.py
+    fi
+
+
+    num=`cat self_config.py | grep "admin_prefix" | wc -l`
+    if [ $num == 0 ]; then
+        echo '' >> self_config.py
+        echo 'admin_prefix="admin"' >> self_config.py
     fi
 
 }
@@ -167,6 +180,9 @@ echo "2019.05.07更新版本：1、修复若干bug，并带来若干bug；2、�
 echo "2019.05.09更新版本：1、修复【网盘搬家】部分bug；2、修复【更新列表】增量更新不起效的bug；3、【更新列表】可选网盘更新啦！"
 echo "2019.05.10更新版本：1、新增robots.txt自定义；2、离线下载功能独立出来"
 echo "2019.05.11更新版本：1、修复离线下载bug；2、优化离线下载界面体验"
+echo "2019.05.21更新版本：修复若干bug"
+echo "2019.05.22更新版本：支持自定义后台路径（更安全）"
+echo "2019.05.23更新版本：新增负载均衡功能！"
 echo "---------------------------------------------------------------"
 echo "更新完成！"
 echo "如果网站无法访问，请检查config.py!"
