@@ -72,6 +72,18 @@ def index(path=None):
     has_verify_=has_verify(path)
     if request.method=="POST":
         password1=request.form.get('password')
+
+        # To check if listing the file in path
+        is_list_index=request.form.get('isListIndex')
+        # If is listing, return the data list
+        if is_list_index:
+            if password!=False:
+                if password1==password:
+                    return jsonify(data)
+                else:
+                    return MakeResponse(abort(401))
+            else:
+                return jsonify(data)
         if password1==password:
             resp=MakeResponse(redirect(url_for('.index',path=path)))
             resp.delete_cookie(md5_p)
