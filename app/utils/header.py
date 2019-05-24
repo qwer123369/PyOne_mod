@@ -360,6 +360,7 @@ def AddResource(data,user=GetConfig('default_pan')):
                     item['grandid']=idx
                     item['parent']=pid
                     item['path']=path
+                    item['is_hidden']=False
                     mon_db.items.insert_one(item)
                     pid=fdata.get('id')
     #插入数据
@@ -388,6 +389,7 @@ def AddResource(data,user=GetConfig('default_pan')):
         item['order']=1
     else:
         item['order']=2
+    item['is_hidden']=False
     mon_db.items.insert_one(item)
 
 
@@ -481,6 +483,7 @@ class GetItemThread(Thread):
                                     path=convert2unicode(value['name'])
                                 path=urllib.unquote('{}:/{}'.format(self.user,path))
                                 item['path']=path
+                                item['is_hidden']=False
                                 subfodler=mon_db.items.insert_one(item)
                                 if value.get('folder').get('childCount')==0:
                                     continue
@@ -516,6 +519,7 @@ class GetItemThread(Thread):
                                 path=convert2unicode(value['name'])
                             path=urllib.unquote('{}:/{}'.format(self.user,path))
                             item['path']=path
+                            item['is_hidden']=False
                             subfodler=mon_db.items.insert_one(item)
                             if value.get('folder').get('childCount')==0:
                                 continue
@@ -562,6 +566,7 @@ class GetItemThread(Thread):
                                 item['order']=1
                             else:
                                 item['order']=2
+                            item['is_hidden']=False
                             mon_db.items.insert_one(item)
             else:
                 InfoLogger().print_r('{}\'s size is zero'.format(url))

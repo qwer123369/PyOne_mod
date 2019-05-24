@@ -119,6 +119,13 @@ a:hover {
                     <button class="mdui-btn mdui-btn-icon" onclick="Rename('{{data['id']}}')" mdui-tooltip="{{'{'}}content: '重命名'{{'}'}}">
                         <i class="mdui-icon material-icons">&#xe8e1;</i>
                     </button>
+                    <button class="mdui-btn mdui-btn-icon" onclick="ToggleHide('{{data['id']}}')" mdui-tooltip="{{'{'}}content: '{{ '显示' if data['is_hidden'] else '隐藏' }}'{{'}'}}">
+                        {%if data['is_hidden'] %}
+                        <i class="mdui-icon material-icons">&#xe8f4;</i>
+                        {%else%}
+                        <i class="mdui-icon material-icons">&#xe8f5;</i>
+                        {%endif%}
+                    </button>
                 </td>
             </tr>
             {%else%}
@@ -149,6 +156,13 @@ a:hover {
                         <i class="mdui-icon material-icons">&#xe3c9;</i>
                     </button>
                     {%endif%}
+                    <button class="mdui-btn mdui-btn-icon" onclick="ToggleHide('{{data['id']}}')" mdui-tooltip="{{'{'}}content: '{{ '显示' if data['is_hidden'] else '隐藏' }}'{{'}'}}">
+                        {%if data['is_hidden'] %}
+                        <i class="mdui-icon material-icons">&#xe8f4;</i>
+                        {%else%}
+                        <i class="mdui-icon material-icons">&#xe8f5;</i>
+                        {%endif%}
+                    </button>
                 </td>
             </tr>
             {%endif%}
@@ -380,6 +394,33 @@ function AddFolder() {
                     $('#layui-layer-shade1').remove();
                 }
             });
+    });
+}
+
+function ToggleHide(fileid){
+    $.ajax({
+        type: "POST",
+        url: "{{url_for('admin.HideToggleReq')}}",
+        data: { fileid: fileid },
+        async: false,//使用同步的方式,true为异步方式
+        dataType: "json",
+        beforeSend: function(xhr) {
+            var index2 = layer.load(2, {
+                shade: [0.1, '#fff'] //0.1透明度的白色背景
+            });
+        },
+        success: function(data) {
+            if(data.result){
+                alert('操作成功');
+            }
+            else{
+                alert('操作成功');
+            }
+            window.location.reload();
+        },
+        complete: function(xhr) {
+            $('#layui-layer-shade1').remove();
+        }
     });
 }
 </script>

@@ -54,8 +54,9 @@ def FetchData(path='{}:/'.format(GetConfig('default_pan')),page=1,per_page=50,so
             item['size']=d['size']
             item['type']=d['type']
             item['path']=d['path']
+            item['is_hidden']=d['is_hidden']
             if dismiss:
-                if d['name'] not in ('README.md','README.txt','readme.md','readme.txt','.password','HEAD.md','HEAD.txt','head.md','head.txt'):
+                if d['name'] not in ('README.md','README.txt','readme.md','readme.txt','.password','HEAD.md','HEAD.txt','head.md','head.txt') and d['is_hidden']!=False:
                     resp.append(item)
             else:
                 resp.append(item)
@@ -85,8 +86,9 @@ def FetchData(path='{}:/'.format(GetConfig('default_pan')),page=1,per_page=50,so
                 item['size']=d['size']
                 item['type']=d['type']
                 item['path']=d['path']
+                item['is_hidden']=d['is_hidden']
                 if dismiss:
-                    if d['name'] not in ('README.md','README.txt','readme.md','readme.txt','.password','HEAD.md','HEAD.txt','head.md','head.txt'):
+                    if d['name'] not in ('README.md','README.txt','readme.md','readme.txt','.password','HEAD.md','HEAD.txt','head.md','head.txt') and d['is_hidden']!=False:
                         resp.append(item)
                 else:
                     resp.append(item)
@@ -128,8 +130,9 @@ def FetchData(path='{}:/'.format(GetConfig('default_pan')),page=1,per_page=50,so
                 item['size']=d['size']
                 item['type']=d['type']
                 item['path']=d['path']
+                item['is_hidden']=d['is_hidden']
                 if dismiss:
-                    if d['name'] not in ('README.md','README.txt','readme.md','readme.txt','.password','HEAD.md','HEAD.txt','head.md','head.txt'):
+                    if d['name'] not in ('README.md','README.txt','readme.md','readme.txt','.password','HEAD.md','HEAD.txt','head.md','head.txt') and d['is_hidden']!=False:
                         resp.append(item)
                 else:
                     resp.append(item)

@@ -77,6 +77,7 @@ def CreateFolder(folder_name,grand_path,user=GetConfig('default_pan')):
         path='{}:{}'.format(user,path)
         item['path']=path
         item['order']=0
+        item['is_hidden']=False
         mon_db.items.insert_one(item)
         return True
     else:
@@ -238,3 +239,10 @@ def ReName(fileid,new_name,user=GetConfig('default_pan')):
     else:
         InfoLogger().print_r(data.get('error').get('msg'))
         return False
+
+def ToggleHide(fileid):
+    it=mon_db.items.find_one({'id':fileid})
+    old_hideen_prop=it['is_hidden']
+    new_value={'is_hidden': not old_hideen_prop}
+    mon_db.items.find_one_and_update({'id':fileid},{'$set':new_value})
+    return True

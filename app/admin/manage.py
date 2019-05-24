@@ -229,3 +229,9 @@ def Rename():
             new_name=new_name[:-1]
     result=ReName(fileid,new_name,user)
     return jsonify({'result':result})
+
+@admin.route('/hide',methods=['POST'])
+def HideToggleReq():
+    fileid=request.form.get('fileid')
+    result=ToggleHide(fileid)
+    return jsonify({'result':result})
