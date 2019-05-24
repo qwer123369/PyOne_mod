@@ -1,40 +1,44 @@
 ![icon](https://ww3.sinaimg.cn/large/0074MymAly1g1ipmf4vj6j305402djr6.jpg)
-# PyOne - 基于Python的onedrive文件本地化浏览系统,使用MongoDB缓存文件
+# PyOne - Mod
 
-Demo地址：[https://pyone.me](https://pyone.me)
+Forked from：[https://github.com/abbeyokgo/PyOne](https://github.com/abbeyokgo/PyOne)
 
-Wiki地址：[https://wiki.pyone.me/](https://wiki.pyone.me/)
+## What's Changed:
 
-QQ交流群：[https://jq.qq.com/?_wv=1027&k=5ypfek0](https://jq.qq.com/?_wv=1027&k=5ypfek0)
+Ability to hide file/folder from admin manage page.
 
-TG交流群：[https://t.me/joinchat/JQOOug6MY11gy_MiXTmqIA](https://t.me/joinchat/JQOOug6MY11gy_MiXTmqIA)
+Add Material_mod theme:
+- Scroll loading images by `scrollLoading.js `
 
+Enable image thumbnail for Material and Material_mod theme.
 
-PyOne论坛：[https://bbs.pyone.me/](https://bbs.pyone.me/)
+List index through api
 
-**有任何问题，先看wiki！wiki找不到解决办法的，再到论坛里提问！**
+## 功能改变:
 
+后台文件管理增加文件/文件夹隐藏功能
 
-```
-2019.02.15：PyOne代码组织大变更！更新版本号为4.0！
+添加Material_mod主题:
+-   滚动时动态加载图片 by `scrollLoading.js `
 
-如果是2019.02.15之前安装的PyOne，升级到4.0需要重新安装！
+前台图片模式请求图片时返回缩略图 (仅限Material 和 Material_mod主题)
 
-升级4.0教程：
+添加返回文件列表的POST api
 
-1. 备份config.py，并改名为self_config.py；备份supervisord.conf
+## Change Log:
 
-2. 备份data目录
+19-05-23: Add list index api
 
-3. 删除原来的PyOne目录
+19-05-25: Thumbnail changes, Material_mod theme
 
-4. 重新git clone https://www.github.com/abbeyokgo/PyOne.git
+## Demo
+[https://drive.mihoyo.tech/](https://drive.mihoyo.tech/)  
 
-5. 将self_config.py、supervisord.conf和data目录复制回去
+## Installation, Usage, Documentation
 
-6. 创建一个锁定文件：touch .install
+See: [https://github.com/abbeyokgo/PyOne](https://github.com/abbeyokgo/PyOne)
 
-6. 安装新的依赖包：pip install flask_script
+## Additional Third Party
 
-7. 重启网站：supervisorctl -c supervisord.conf reload
-```
+[scrollLoading.js](https://www.zhangxinxu.com/wordpress/2010/11/jquery%E9%A1%B5%E9%9D%A2%E5%9B%BE%E7%89%87%E7%AD%89%E5%85%83%E7%B4%A0%E6%BB%9A%E5%8A%A8%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%AE%9E%E7%8E%B0/)
+
