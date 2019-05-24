@@ -119,11 +119,11 @@ a:hover {
                     <button class="mdui-btn mdui-btn-icon" onclick="Rename('{{data['id']}}')" mdui-tooltip="{{'{'}}content: '重命名'{{'}'}}">
                         <i class="mdui-icon material-icons">&#xe8e1;</i>
                     </button>
-                    <button class="mdui-btn mdui-btn-icon" onclick="ToggleHide('{{data['id']}}')" mdui-tooltip="{{'{'}}content: '{{ '显示' if data['is_hidden'] else '隐藏' }}'{{'}'}}">
+                    <button class="mdui-btn mdui-btn-icon" onclick="ToggleHide('{{data['id']}}')" mdui-tooltip="{{'{'}}content: '{{ '点击显示文件' if data['is_hidden'] else '点击隐藏文件' }}'{{'}'}}">
                         {%if data['is_hidden'] %}
-                        <i class="mdui-icon material-icons">&#xe8f4;</i>
-                        {%else%}
                         <i class="mdui-icon material-icons">&#xe8f5;</i>
+                        {%else%}
+                        <i class="mdui-icon material-icons">&#xe8f4;</i>
                         {%endif%}
                     </button>
                 </td>
