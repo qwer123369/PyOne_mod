@@ -50,25 +50,29 @@
                         </a>
                     </li>
                     {%elif file_ico(data)=='image'%}
-                        <li class="mdui-list-item file mdui-ripple mdui-col-sm-6 mdui-col-xs-6">
-                            <a href="{{url_for('front.index',path=data['path'])|safe}}" target="_blank">
-                                {%if image_mode==1%}
+                        {%if image_mode==1%}
+                            <li class="mdui-list-item file mdui-ripple mdui-col-sm-6 mdui-col-xs-6">
+                                    <a href="{{url_for('front.index',path=data['path'])|safe}}" target="_blank">
                                     <div class="mdui-col-xs-12 mdui-col-sm-9 mdui-text-truncate">
                                         <i class="mdui-icon material-icons">{{file_ico(data)}}</i> {{data['name']}}
                                     </div>
                                      <div class="mdui-col-sm-3 mdui-text-right">{{data['size']}}</div>
                                     <br>
                                     <img class="mdui-img-fluid mdui-center scrollLoading" data-url="{{url_for('front.show',fileid=data['id'],user=cur_user,action='thumbnail')}}"  src="data:image/gif;base64,R0lGODlhFAAUAKIHAKrR/1ql//n8/8zj/zKO/+fy/4S8/////yH/C05FVFNDQVBFMi4wAwEAAAAh+QQJAwAHACwAAAAAFAAUAAADgHiq0k3EALEqcw/CYU8rmKBpBrUIBQg6gzEaZ7p2QqABnmx2iksEKB3vdEsNCsMKAGIoHHfJAiQwqEKHIlt1cOXVfttuRxqgVpFJBaDcHAC46Vp5Un2nDWXgoQDowy0Ca2UcCnx9byt8eHMVAm59EgaSkgESXYYAk5qEXo+Tb1cJACH5BAkDAAcALAAAAAAUABQAAAOEeKpiEQQaMMS6R0DCezQFJowAB20deI3jNFQDYKRhxlrYEW+AfeeMEqQgKBBxQMUsACiOkhfAI2AkQheFB8iIhGYf1W5SAy5UxLkvaGC8KmQBg+BVuRYchoqZjQ7iLXN0VoAZMgZ5DHuCVQOHhz0LRTEAlJWOE2KSk5UyADVARXuULzkJACH5BAkDAAcALAAAAAAUABQAAAODeHoCFgRGA8q64pHNdzDDxRhd8GneIChC4wHCYA0AZFpMS7fiUdiGlnDVWwxsqmHx8vi0CsSl4ueERqUHU6DAvUofwS520eRCx76TwOztDR6wgqyNMdhV3EHS23LYhXJ6VkRcfiALeXoycgUAjncigXqOlA4AIT1rNDSVelJPgno8FwkAIfkECQMABwAsAAAAABQAFAAAA4R4elJgIZBggFiYAUm6n0B2ON8UdZJRLILhUUMxzFJkLIBnDOIBRSFBa7LqHTYRoTBmVAgigYHy0lQgDVNqswDBKquLbkMIHhnOjYJ2e8YW1OXB2fKGVx+V9HuNEcjRDDJ7DCwyeEUjMjNqjDMVABaFM5MzkJZSIg2TAAOXmEZvlDGICgkAIfkECQMABwAsAAAAABQAFAAAA4N4qgUWMBhQllUgkM11GNfRcBtUQoawCEZnDIXQtBCgHgBnxFfxQKCChhC4hQ6/XW5TOSpYwIHG4LQ4JoKsseqTaLdOnyGlra7G5KyZgc7y1oOxLfZ2CgCOgbtQD+GxBzJ8fYECA3gAIE+DfFoFA4d4eit8kJaWiJM9lZiHMGCUj5eECQAh+QQJAwAHACwAAAAAFAAUAAADf3iqAhYkBDPEugpAEqMMA3YIBmdy0AdYS4kChSAUmroAZlCI5ASOm4DoojEYGibWcPSguAzLy8CI44SiioLRRdhhmcaZ7As+ypRRmmF1Jk8B7Ha0Aa/IYtgBfDUq+McYAnpwXn1+f2cFA4NXDDOHi5F7eIF+A4qRi4U8j5mUCwkAIfkECQMABwAsAAAAABQAFAAAA4J4qgUW0JhRllUgEA37FJfwEOT2eECliGWQCsXgRAB4DKWhLvA8HQUNwXC5OCQCHGlXPIgkAwOJ2LREDYDSoGp5Zkhb7sqRJdnEDUCZEEar34IzVwYYxO9iwbtwxzeTdCB9fjwDdCp3BYqDMYYpXXGKko2GhnIrMIoUlRRckZIUfBcJACH5BAkDAAcALAAAAAAUABQAAAODeKoFZuEZUMS6BwQSun+AdRUGYX5RNBVXyQVDUQ2DNImDSRgY4zyDg2CzE/UEtUfjxOpdfjUTzzmaaExB6qIBuBKaWmEXoMuGBWNXKHzgeqdhLu1kdCIBsUIgJKhfkAN4Fn2EfUKHAgU0MQqFjn2Ki2BChDKWipEVGIWWeXlalYmWPQkAIfkECQMABwAsAAAAABQAFAAAA4V4egJgARoDRllYzMD7pFfGEdzkfNMgKBpJOEJxDcMHrAdA7DeOFQ+YIEACYI4xiqEw2AV8x4WjYtgZolGgg0gYYKNTrveLGWx3Y7Ki8uCpWWazE4oF0gZcI1lwLwx3BH50AjF3hAU8hIoshTQhB2aKkjEyjkiTMpkWjxmKfpkydJeeixgJACH5BAkDAAcALAAAAAAUABQAAAODeHpSAyYCMMS6DIZtQowDdhTAZn4oYClCxwFF7EATsAwBEVDiMRk8Qc5T6CkeE0FJVzRmJgUDgWBzKkgUKaFifQ6mhGb3gZuKnYLBI7ftMtQDrcHtgIND6HpBOA2sRA1wFl99RX8CDQ4xC1pbiI+JAzGHWpCJMnsiMJB7Moholnt/CgkAIfkECQMABwAsAAAAABQAFAAAA4V4qjVgDw6xqhommM2lPQUQaGP3ANMiiCVQFILgAHR6sIFLVSvtgiPN7nOYTQaEUYGomhUMSQCzMnAMAgTCcsqoXpNbrqyKDYSn4y9hwFWkoQRDG1RtZLXixquATQ4/LwMwN3dmFjECe2FwSQaIMYqDbowEjzAvMR8AWQGPiYhMIQCemRUJACH5BAkDAAcALAAAAAAUABQAAAODeKoyYBCAIpZVA+ooyz0CEBij9kjAUC1iMA6UUDjosAxuAKxWk06gHOBjcQxUOBeP6IORCEOiZXYMEAIe6YKKu2a1oOPgSlhKG1UC4auVOdVRcKNQAKjLcjpdYCUYwHoUB3ZqAWYgMnsLBndQKgKQkIoLAoyNZZExh4R3kZFtImqeZgkAIfkECQMABwAsAAAAABQAFAAAA4R4qjJgII4illXDaAgjoJfwbJ0HDEPFPIGWCkWBSikWtIC6wMU5HQJDy3C5oFCNm0FXBB4LwgCgeZFNogOqpYG6BQraXazgZVJhkwCBAA4Dx0LC1D2Wrb9hAQ+mJizPPCAAfQY1W3owKkFrBC0oMYgUTD2Md2uSiEWDlWsvZhY9cWs5ZgkAIfkECQMABwAsAAAAABQAFAAAA4R4qjLwbpQilj3DmAc2pJfQaZ4DREO1jNtECcUgy+oQaMDFxHJxCCSASgebNQI3n84ikQCQuaWlMTEgB9KpyxoYZmETZECZ/W2v3iW4ACDcyjvKwD0uC+54A4FgIIfuLxgBexsVhj94dwxWezcnJ1aJU097lZYGeBcxepaVXVkxT3o4OgkAIfkECQMABwAsAAAAABQAFAAAA4N4qlUwb4wmlhUQ6C1nvYMBiJAUeQtmiE9TCEWHqisg3CncvU79WhbXK7QqAI+xxiAg+hxTrlVg8ATCGgYmtRrEBgJG7oKXnYoVtxfga3BWb+kvWAyHGwhf96VeWeLBYRUwK3UKAHh4BiUFWQQEbW6HAY6Ok5R4YRYjlpeJXBJSbCgLCQAh+QQJAwAHACwAAAAAFAAUAAADg3h6UjUwFrEqeyCDCItlg5ZxEqUIg6ENQuM88BIaxuB98MQANPstr0mKZvpdHAJezVhxJXtFY8thCBhuTEZDUL1mTy2udfDVtgCBAKAcRqUD2B+qXbVGKwUDAU4ZpAleRSh6BIALaAF7GzY8iYUBggB7j5OFhV4WfpWWinEWSoBWAJ4JACH5BAkDAAcALAAAAAAUABQAAAODeKpS868UsapyYGQ4pD2CBoxcJFGMmJ1CK7GKOrRW81ICYIzod9wNw67nc010hoGvNskJC8tKqyU0EJdTQRUaZUyryi5oCgjsxAcDIZAJmLnLQoBAAGjd1uicDh2430xqdAALZX8AEw4GewR5DIZra4x0BnALfpF0mmxXCyGLfzuWBwkAIfkECQMABwAsAAAAABQAFAAAA314qlI10AmxqnowD1eobUCYPWTnKYO4mQ3XLUUIDOcySZQgD9bHpqFab0IMGXi9T9EAKCSVE4NUmCQKpAbqkMDFOp+LAZcAkCLBB0N3YAhk0YIx4No2oANjyiDgfn/wXAALAHx8TRMpgAR2NoSFBIpjfhV7j5FnQ2x4fExCCQAh+QQJAwAHACwAAAAAFAAUAAADgXiqUjXOCbGqeiO/WKYVWQhxnccUQFhOTVdeaUpVbH2AQGp9NSrvtNogNwDyhgADoGCsFAjQ3LK5EEAJScCM+iQEkgYm9TC4gotjA9QwMLjFxkIgKnArt5+5l9k2fDsWBWpRDEkBAUojKHoEBk6Gh5FXXgZ4Cm2RmV4ATQ92h3cWCQAh+QQJAwAHACwAAAAAFAAUAAADgniqUv4iikVPGeO+IidtGLY5HXWJXSopF5BVTHoIgzt4sAQQDuDiMEWAQDDUAIVgZUcIHJPKxYAY8AGAygKRYIVGZ9vuVzFtDgzG8YFpKKAN2IqWeAWgkVEDdeK+32aAAnp0DGdvRicAQ4QLNAYBAY+QkE1cXgwFdpObTlEtBop3MAkAIfkECQMABwAsAAAAABQAFAAAA4d4qiJVrslF3bsQzlpGx1K4OEOphRIQCAdpbm1jEITRll5DUQBNPDjWbucDFAAl4XAx8JWMy13BCQAoowoqFLsI0AbVAlcxJQTAyOuyaT4attGCl2CtvtWjnnlwKBj+RmItZCpmVgoDf29IJgAGXgEGV4mKkX8BkAZ8O2CPj5iYb1gPdoA5FAkAIfkECQMABwAsAAAAABQAFAAAA4N4etL+Ykkmii2wgMmufwFhFEtVDBYkDEQblAOKcUfYbqsc0YfREpjYYMcr/AAnFE8CcAlnywOLEBgAhtHFLwYgLgs2KzJ7AFPFA3JTpAF0o4JAqOt2eyWaUICkMdgZJQUGehsKVgaIKIoAg3IGRCuIkohylWMTfZIBjX4kPGJ+fkoSCQAh+QQJAwAHACwAAAAAFAAUAAADgXiq0i4AlEWZKE8EQkA9TYFhDscZEyOumbGdgio6VfF2YDHM32JwAcxgF+spCibJMGVUAIDDQbF5GECH06aNEIhmjRruEPDtIcUDCdW5QUV21MIvQE4DpE1XIHgoRCJfFwB7dAt2byNpenRTAooGkAYAi5JMhhGRLpFkYI+Sd5YHCQA7"/>
-                                {%else%}
+                                </a>
+                            </li>
+                        {%else%}
+                            <li class="mdui-list-item file mdui-ripple">
+                                <a href="{{url_for('front.index',path=data['path'])|safe}}" target="_blank">
                                     <div class="mdui-col-xs-8 mdui-col-sm-5 mdui-text-truncate">
                                         <i class="mdui-icon material-icons">{{file_ico(data)}}</i> {{data['name']}}
                                     </div>
                                     <div class="mdui-col-xs-4 mdui-col-sm-2">{{data['lastModtime']}}</div>
                                     <div class="mdui-col-sm-2 mdui-text-right">{{data['type']}}</div>
                                     <div class="mdui-col-sm-2 mdui-text-right">{{data['size']}}</div>
-                                {%endif%}
-                            </a>
-                        </li>
+                                </a>
+                            </li>
+                        {%endif%}
                     {%else%}
                         <li class="mdui-list-item file mdui-ripple">
                             <a href="{{url_for('front.index',path=data['path'])|safe}}" target="_blank">
