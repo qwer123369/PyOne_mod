@@ -172,8 +172,13 @@ def show(fileid,user,action='download'):
                 resp=MakeResponse(redirect(play_url))
             else:
                 resp=MakeResponse(redirect(downloadUrl))
+        elif ext in ['bmp','jpg','jpeg','png','gif']:
+            if action=='thumbnail':
+                resp=MakeResponse(redirect(play_url))
+            else:
+                resp=MakeResponse(redirect(downloadUrl))
         else:
-            resp=MakeResponse(redirect(play_url))
+            resp=MakeResponse(redirect(downloadUrl))
     else:
         resp=MakeResponse(abort(404))
     return resp

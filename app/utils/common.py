@@ -190,6 +190,8 @@ def _getdownloadurl(id,user):
         play_url=play_url.replace('thumbnail','videomanifest').replace('&width=800&height=800','')+'&part=index&format=dash&useScf=True&pretranscode=0&transcodeahead=0'
         # play_url=re.sub('inputFormat=.*?&','inputFormat=mp4&',play_url)
         # downloadUrl=downloadUrl.replace('thumbnail','videomanifest').replace('&width=800&height=800','')+'&part=index&format=dash&useScf=True&pretranscode=0&transcodeahead=0'
+    elif ext in ['bmp','jpg','jpeg','png','gif']:
+        play_url=_thunbnail(id,user)
     else:
         play_url=downloadUrl
     return downloadUrl,play_url
