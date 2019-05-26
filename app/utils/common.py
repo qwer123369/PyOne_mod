@@ -155,6 +155,7 @@ def _thunbnail(id,user):
     else:
         url=app_url+'_api/v2.0/me/drive/items/{}/thumbnails/0?select=large'.format(id)
     r=browser.get(url,headers=headers)
+    print r.content
     data=json.loads(r.content)
     if data.get('large').get('url'):
         # return data.get('large').get('url').replace('thumbnail','videotranscode').replace('&width=800&height=800','')+'&format=dash&track=audio&transcodeAhead=0&part=initsegment&quality=audhigh'
@@ -185,6 +186,13 @@ def _getdownloadurl(id,user):
     else:
         ErrorLogger().print_r('Getting resource:{} {} error:{}'.format(id,filename,data.get('error').get('message')))
         downloadUrl=data.get('error').get('message')
+    # if ext in ['webm','avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf'] and od_type=='nocn' and 1==0:
+    #     play_url=_thunbnail(id,user)
+    #     play_url=play_url.replace('thumbnail','videomanifest').replace('&width=800&height=800','')+'&part=index&format=dash&useScf=True&pretranscode=0&transcodeahead=0'
+    #     # play_url=re.sub('inputFormat=.*?&','inputFormat=mp4&',play_url)
+    #     # downloadUrl=downloadUrl.replace('thumbnail','videomanifest').replace('&width=800&height=800','')+'&part=index&format=dash&useScf=True&pretranscode=0&transcodeahead=0'
+    # else:
+    play_url=downloadUrl
     if ext in ['webm','avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf']:
         play_url=_thunbnail(id,user)
         play_url=play_url.replace('thumbnail','videomanifest').replace('&width=800&height=800','')+'&part=index&format=dash&useScf=True&pretranscode=0&transcodeahead=0'
