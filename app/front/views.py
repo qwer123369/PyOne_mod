@@ -140,6 +140,7 @@ def show(fileid,user,action='download'):
     path=GetPath(fileid)
     url=request.url.replace(':80','').replace(':443','').encode('utf-8').split('?')[0]
     inner_url='/'+urllib.quote('/'.join(url.split('/')[3:]))
+    dark_mode=GetCookie(key='dark_mode',default=0)
     if request.method=='POST' or action=='share':
         InfoLogger().print_r(u'share page:{}'.format(path))
         if ext in ['csv','doc','docx','odp','ods','odt','pot','potm','potx','pps','ppsx','ppsxm','ppt','pptm','pptx','rtf','xls','xlsx']:
@@ -147,16 +148,16 @@ def show(fileid,user,action='download'):
             url = 'https://view.officeapps.live.com/op/view.aspx?src='+urllib.quote(downloadUrl)
             resp=MakeResponse(redirect(url))
         elif ext in ['bmp','jpg','jpeg','png','gif']:
-            resp=MakeResponse(render_template('theme/{}/show/image.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name))
+            resp=MakeResponse(render_template('theme/{}/show/image.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name,dark_mode=dark_mode))
         elif ext in ['mp4','webm']:
-            resp=MakeResponse(render_template('theme/{}/show/video.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name))
+            resp=MakeResponse(render_template('theme/{}/show/video.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name,dark_mode=dark_mode))
         elif ext in ['avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf']:
-            resp=MakeResponse(render_template('theme/{}/show/video2.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name))
+            resp=MakeResponse(render_template('theme/{}/show/video2.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name,dark_mode=dark_mode))
         elif ext in ['ogg','mp3','wav']:
-            resp=MakeResponse(render_template('theme/{}/show/audio.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name))
+            resp=MakeResponse(render_template('theme/{}/show/audio.html'.format(GetConfig('theme')),url=url,inner_url=inner_url,path=path,cur_user=user,name=name,dark_mode=dark_mode))
         elif CodeType(ext) is not None:
             content=common._remote_content(fileid,user)
-            resp=MakeResponse(render_template('theme/{}/show/code.html'.format(GetConfig('theme')),content=content,url=url,inner_url=inner_url,language=CodeType(ext),path=path,cur_user=user,name=name))
+            resp=MakeResponse(render_template('theme/{}/show/code.html'.format(GetConfig('theme')),content=content,url=url,inner_url=inner_url,language=CodeType(ext),path=path,cur_user=user,name=name,dark_mode=dark_mode))
         elif name=='.password':
             resp=MakeResponse(abort(404))
         else:
