@@ -50,16 +50,16 @@
     /*margin: 20px -8px 0 !important;*/
     padding: 15px !important;
     border-radius: 5px;
-    background-color: #fff;
-    -webkit-box-shadow: 0 .5em 3em rgba(161, 177, 204, .4);
-    box-shadow: 0 .5em 3em rgba(161, 177, 204, .4);
-    background-color: #fff
+    /*background-color: #fff;*/
+    -webkit-box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 5px 8px 0 rgba(0,0,0,.14), 0 1px 14px 0 rgba(0,0,0,.12);
+    /*background-color: #fff*/
 }
 
 .mdui-img-fluid,
 .mdui-video-fluid {
     border-radius: 5px;
-    border: 1px solid #eee
+    border: 1px solid #a7a7a7
 }
 
 .mdui-list {
@@ -70,7 +70,7 @@
     margin: 0 !important;
     border-radius: 5px;
     padding: 0 10px 0 5px !important;
-    border: 1px solid #eee;
+    border: 1px solid rgba(167, 167, 167, 0.48);
     margin-bottom: 10px !important
 }
 

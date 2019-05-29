@@ -69,6 +69,7 @@ def index(path=None):
         path=':'.join([user,'/'])
     page=request.args.get('page',1,type=int)
     image_mode=GetCookie(key='image_mode',default=0)
+    dark_mode=GetCookie(key='dark_mode',default=0)
     sortby=GetCookie(key='sortby',default=GetConfig('default_sort'))
     order=GetCookie(key='order',default=GetConfig('order_m'))
     action=request.args.get('action','download')
@@ -116,6 +117,7 @@ def index(path=None):
                     ,items=data
                     ,path=path
                     ,image_mode=image_mode
+                    ,dark_mode=dark_mode
                     ,readme=readme
                     ,ext_r=ext_r
                     ,head=head
@@ -126,6 +128,7 @@ def index(path=None):
                     ,all_image=all_image
                     ,endpoint='.index'))
     resp.set_cookie('image_mode',str(image_mode))
+    resp.set_cookie('dark_mode',str(dark_mode))
     resp.set_cookie('sortby',str(sortby))
     resp.set_cookie('order',str(order))
     return resp
@@ -190,6 +193,7 @@ def find(key_word):
     page=request.args.get('page',1,type=int)
     ajax=request.args.get('ajax','no')
     image_mode=request.args.get('image_mode')
+    dark_mode=request.args.get('dark_mode')
     sortby=request.args.get('sortby')
     order=request.args.get('order')
     action=request.args.get('action','download')
@@ -224,6 +228,7 @@ def find(key_word):
                     ,cur_user='搜索:"{}"'.format(key_word)
                     ,endpoint='.find'))
     resp.set_cookie('image_mode',str(image_mode))
+    resp.set_cookie('dark_mode',str(dark_mode))
     resp.set_cookie('sortby',str(sortby))
     resp.set_cookie('order',str(order))
     return resp

@@ -32,7 +32,7 @@
     {{GetConfig('headCode')|safe}}
 </head>
 
-<body class="mdui-theme-primary-blue-grey mdui-theme-accent-blue">
+<body class="mdui-theme-primary-blue-grey mdui-theme-accent-blue {%if dark_mode=='1'%}mdui-theme-layout-dark{%endif%}">
     <div class="mdui-container">
     {%include 'theme/'+GetConfig('theme')+'/header.html'%}
     {%block content%}

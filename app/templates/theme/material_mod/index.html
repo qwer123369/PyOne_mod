@@ -10,6 +10,11 @@
                     <input type="checkbox" id="image_view" {%if image_mode==1%}checked{%endif%}/>
                     <i class="mdui-switch-icon"></i>
               </label>
+              <label class="mdui-switch">
+                    暗黑配色
+                  <input type="checkbox" id="dark_mode" {%if dark_mode=='1'%}checked{%endif%}/>
+                    <i class="mdui-switch-icon"></i>
+              </label>
         </div>
         <div class="mdui-col-xs-2">
             <button class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '搜索'}" mdui-dialog="{target: '#find_dialog'}"><i class="mdui-icon material-icons">search</i></button>
@@ -148,6 +153,7 @@ function setCookie(c_name, value, exdays) {
 }
 
 var ckname='image_mode';
+var dark_mode_ckname='dark_mode';
 $('#image_view').change(function(){
    if($(this).attr('checked')){
         setCookie(ckname,1,1);
@@ -156,6 +162,16 @@ $('#image_view').change(function(){
         setCookie(ckname,0,1);
         window.location.href="{{url_for('front.index',path=path,image_mode=1)}}";
    }
+});
+
+$('#dark_mode').change(function () {
+    if($(this).attr('checked')){
+        setCookie(dark_mode_ckname,1,1);
+        window.location.href="{{url_for('front.index',path=path,dark_mode=0)}}";
+    }else{
+        setCookie(dark_mode_ckname,0,1);
+        window.location.href="{{url_for('front.index',path=path,dark_mode=1)}}";
+    }
 });
 
 function py_find() {
