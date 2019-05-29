@@ -126,14 +126,15 @@ var $$ = mdui.JQ;
 $$(function() {
     $$('.file a').each(function() {
         $$(this).on('click', function() {
-            layer.open({
-              type: 2,
-              title: 'PyOne播放窗口',
-              shadeClose: true,
-              shade: 0.8,
-              area: ['100%', '100%'],
-              content: $$(this).attr('href')+"?action=share" //iframe的url
-            });
+            window.open($$(this).attr('href')+"?action=share");
+            // layer.open({
+            //   type: 2,
+            //   title: 'PyOne播放窗口',
+            //   shadeClose: true,
+            //   shade: 0.8,
+            //   area: ['100%', '100%'],
+            //   content: $$(this).attr('href')+"?action=share" //iframe的url
+            // });
             return false;
         });
     });
